@@ -9,6 +9,7 @@ function App() {
     <header>
       Hello
     </header>
+    <h1>Hello Again</h1>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
      <Navbar.Brand href="/">World Beers</Navbar.Brand>
      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
