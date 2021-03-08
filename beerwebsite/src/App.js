@@ -8,6 +8,8 @@ function App() {
     <div className="App">
     <header>
       Hello
+      <h1>I Hope this works</h1>
+      <p>I really hope this works!!!!</p>
     </header>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
      <Navbar.Brand href="/">World Beers</Navbar.Brand>
