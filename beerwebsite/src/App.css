@@ -37,14 +37,25 @@
   }
 }
 
-#signIn{   
+#header{
   float: left;
+}
+
+
+.input-group{
+  /* float:left; */
+  margin-top: 15px;
+  margin-left: 100px;
+}
+
+#signIn{   
+  /* float: left; */
   margin-top: 15px;
   margin-right: 15px;  
 }
 
 #cart{
-  float: left;
+  /* float: left; */
   margin-top: 15px; 
   margin-left: 15px;
 }
