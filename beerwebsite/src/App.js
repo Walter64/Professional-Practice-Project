@@ -2,9 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
+import{BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import{partyPack} from './components/partyPack';
+import{mainPage} from './components/mainPage';
+import{worldBeers} from './components/worldBeers';
+import{bestSellers} from './components/bestSellers';
+import{nonAlcoholic} from './components/nonAlcoholic';
 
 function App() {
   return (
+    <Router>
     <div className="App">
       <header>
         <div>
@@ -29,18 +36,27 @@ function App() {
 
       <div id="nav">
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand href="/">World Beers</Navbar.Brand>
+          <Navbar.Brand href="/">World Beer Garden</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/lookUpHolidayExperience">Link 1</Nav.Link>
-              <Nav.Link href="/addYourOwnExperience">Link 2</Nav.Link>
-              <Nav.Link href="/contactUs">Link 3</Nav.Link>
+              <Nav.Link href="/partyPack">Party Pack</Nav.Link>
+              <Nav.Link href="/worldBeers">World Beers</Nav.Link>
+              <Nav.Link href="/bestSellers">Best Sellers</Nav.Link>
+              <Nav.Link href="/nonAlcoholic">Non-Alcoholic</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+    <Switch>
+    <Route path='/' component={mainPage} exact/>
+      <Route path='/partyPack' component={partyPack}/>
+      <Route path='/worldBeers' component={worldBeers}/>
+      <Route path='/bestSellers' component={bestSellers}/>
+      <Route path='/nonAlcoholic' component={nonAlcoholic}/>
+    </Switch>
       </div>
     </div>
+    </Router>
   );
 }
 
