@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+#signIn{   
+  float: left;
+  margin-top: 15px;
+  margin-right: 15px;  
+}
+
+#cart{
+  float: left;
+  margin-top: 15px; 
+  margin-left: 15px;
+}
+
+#nav{
+  /* float: both; */
+  clear: left;
+}
