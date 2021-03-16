@@ -37,30 +37,73 @@
   }
 }
 
-#header{
-  float: left;
+.flexcontainer{
+  display: flex;  
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 4 em 1em; 
 }
 
-
-.input-group{
-  /* float:left; */
-  margin-top: 15px;
-  margin-left: 100px;
+.flexcontainer div{
+  width: 200px;
+  height: 115px;
+  margin: 5px;  
+  font-size: 3em;
+  text-align: center;
+  padding-top: .3em;
+  position: relative;
 }
 
-#signIn{   
-  /* float: left; */
-  margin-top: 15px;
-  margin-right: 15px;  
+.flexcontainer div:nth-child(1){
+  flex: 6;  
+  flex-shrink: 1;
+}
+.flexcontainer div:nth-child(2){
+  flex: 1;
+  flex-grow: 6;
+  flex-shrink: 4;
+  
+}
+.flexcontainer div:nth-child(3){
+  flex: 3;
+  flex-grow: 3;
+  flex-shrink: 4;  
+}
+.flexcontainer div:nth-child(4){
+  flex: 3;
+  flex-grow: 3;
+  flex-shrink: 4;
 }
 
-#cart{
-  /* float: left; */
-  margin-top: 15px; 
-  margin-left: 15px;
+input[type=search] { 
+  width: 60%;
+  margin-left: 40px;
+  margin-top: 30px;
+  margin-right: 0px; 
+}
+
+.btn {  
+  margin-top: 30px;  
+}
+
+p {
+  font-size: 20px;
+}
+
+p:hover, svg:hover{
+  cursor: pointer;
+}
+
+.flexcontainer div:nth-child(3):hover {  
+  color: #ff7a59;
+  background: #fff    
+}
+
+.flexcontainer div:nth-child(4):hover { 
+  color: #ff7a59;
+  background: #fff    
 }
 
 #nav{
-  /* float: both; */
   clear: left;
 }
