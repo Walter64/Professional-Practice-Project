@@ -3,7 +3,14 @@ import React from 'react';
 export class worldBeers extends React.Component{
     render(){
         return(
-            <h1>Hello From World beers</h1>
+        <div>
+        <ul class="breadcrumb">
+            <li><a href="/">Home </a></li>
+            <li><a href="/partyPack">Party Pack </a></li>
+            <li>World Beers</li>
+        </ul>
+        <h4>Beers From Around The Globe</h4>
+        </div>
         );
     }
 }

@@ -12,7 +12,13 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+#root{
+  background-color: #ececec;
+}
 
+#container{
+  background-color: white;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -107,3 +113,51 @@ p:hover, svg:hover{
 #nav{
   clear: left;
 }
+
+#box{
+  border: solid 5px;
+  
+  background-color: red;
+}
+
+#box1, #box2{
+  width: 2px;
+  border: 1px solid  black;
+  padding: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 14px;
+  margin: 2px;
+}
+
+#box2{
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 40px;
+}
+
+#qty{
+  
+  margin-left: 5px;
+}
+
+#qtyBtn{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: ">\00a0";
+}
+
+h4{
+  text-align: left;
+  margin-left: 100px;
+}
+
+
+
+
+
