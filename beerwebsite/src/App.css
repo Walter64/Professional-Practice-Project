@@ -157,6 +157,11 @@ h4{
   margin-left: 100px;
 }
 
+#crd1, #crd2, #crd3, #crd4, #crd5, #crd6{
+  margin-left: 50px;
+  display: inline-block;
+}
+
 
 
 
