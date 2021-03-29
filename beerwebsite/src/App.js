@@ -9,6 +9,7 @@ import { mainPage } from './components/mainPage';
 import { worldBeers } from './components/worldBeers';
 import { bestSellers } from './components/bestSellers';
 import { nonAlcoholic } from './components/nonAlcoholic';
+import {Create} from './components/create';
 
 function App() {
   return (
@@ -57,15 +58,17 @@ function App() {
                 <Nav.Link href="/worldBeers">World Beers</Nav.Link>
                 <Nav.Link href="/bestSellers">Best Sellers</Nav.Link>
                 <Nav.Link href="/nonAlcoholic">Non-Alcoholic</Nav.Link>
+                <Nav.Link href="/create">Add Beer</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
           <Switch>
-            <Route path='/' component={mainPage} exact />
+            <Route path='/' component={mainPage} />
             <Route path='/partyPack' component={partyPack} />
             <Route path='/worldBeers' component={worldBeers} />
             <Route path='/bestSellers' component={bestSellers} />
             <Route path='/nonAlcoholic' component={nonAlcoholic} />
+            <Route path='/create' component={Create} />
           </Switch>
         </div>
       </div>
