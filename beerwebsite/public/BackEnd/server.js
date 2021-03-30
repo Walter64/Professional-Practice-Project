@@ -42,15 +42,10 @@ const partySchema = new Schema({
   
 });
 
-<<<<<<< HEAD
 const beerModel = mongoose.model('beers', beerSchema)
 
 
 
-=======
-//const beerModel = mongoose.model('beers', beerSchema)
-const packModel = mongoose.model('partyPack', partySchema)
->>>>>>> 7fd8be8a8246cbeee8439fa960f003025bee5318
 app.get('/addBeers', (req, res) =>{
     packModel.find((err, data) =>{
         res.json(data);
