@@ -17,7 +17,7 @@ app.use(function(req, res, next) {
     next();
     });
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json);
+app.use(bodyParser.json());
 
 //Set up using the mongod database
 const strConnection = 'mongodb+srv://admin:bluebirds1927@cluster0.m46dm.mongodb.net/BeerWebsite?retryWrites=true&w=majority';
@@ -34,6 +34,9 @@ const beerSchema = new Schema({
 });
 
 const beerModel = mongoose.model('beers', beerSchema)
+
+
+
 app.get('/addBeers', (req, res) =>{
     beerModel.find((err, data) =>{
         res.json(data);
