@@ -12,13 +12,15 @@ export class Create extends React.Component {
         this.onChangebeerQty = this.onChangebeerQty.bind(this);
         this.onChangeflag = this.onChangeflag.bind(this);
         this.onChangebeerPrice = this.onChangebeerPrice.bind(this);
+        this.onChangebeerImage = this.onChangebeerImage.bind(this);
 
         this.state = {
             beerType: '',
             beerPercent: '',
             beerQty: '',
             flag: '',
-            beerPrice: ''
+            beerPrice: '',
+            beerImage: ''
         }
 
     }
@@ -48,6 +50,16 @@ export class Create extends React.Component {
             beerPrice: e.target.value
         });
     }
+    onChangebeerPrice(e) {
+        this.setState({
+            beerPrice: e.target.value
+        });
+    }
+    onChangebeerImage(e) {
+        this.setState({
+            beerImage: e.target.value
+        });
+    }
 
     onSubmit(e) {
         e.preventDefault();
@@ -57,7 +69,8 @@ export class Create extends React.Component {
             beerPercent: this.state.beerPercent,
             beerQty: this.state.beerQty,
             flag: this.state.flag,
-            beerPrice: this.state.beerPrice
+            beerPrice: this.state.beerPrice,
+            beerImage: this.state.beerImage
 
         }
         axios.post('http://localhost:4000/addBeers', newBeer)
@@ -114,6 +127,15 @@ export class Create extends React.Component {
                             className='form-control'
                             value={this.state.beerPrice}
                             onChange={this.onChangebeerPrice}>
+                        </textarea>
+                    </div>
+
+                    <div className="Form Group">
+                        <label>Beer Image </label>
+                        <textarea type='text'
+                            className='form-control'
+                            value={this.state.beerImage}
+                            onChange={this.onChangebeerImage}>
                         </textarea>
                     </div>
 

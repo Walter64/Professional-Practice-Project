@@ -63,7 +63,7 @@ function App() {
             </Navbar.Collapse>
           </Navbar>
           <Switch>
-            <Route path='/' component={mainPage} />
+            <Route path='/' component={mainPage} exact />
             <Route path='/partyPack' component={partyPack} />
             <Route path='/worldBeers' component={worldBeers} />
             <Route path='/bestSellers' component={bestSellers} />
