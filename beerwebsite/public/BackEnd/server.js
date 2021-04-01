@@ -7,24 +7,33 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers",
-  "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-  });
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+    });
 
-  app.use(cors());
-  app.use(bodyParser.urlencoded({extended: false}));
-  app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
-  //Set up using the mongod database
+//Set up using the mongod database
 const strConnection = 'mongodb+srv://admin:bluebirds1927@cluster0.m46dm.mongodb.net/BeerWebsite?retryWrites=true&w=majority';
 mongoose.connect(strConnection, {useNewUrlParser: true});
 
+// create schema instantiations
 const Schema = mongoose.Schema;
+const Schema2 = mongoose.Schema;
 const Schema1 = mongoose.Schema;
 
+const nonAlcoSchema = new Schema2({
+  beerImageAl:String,
+  beerTypeAl:String,
+  beerPercentAl:String,
+  beerQtyAl:String,
+  flagAl:String,
+  beerPriceAl:String
+});
 
 const partySchema = new Schema({
   beerImage:String,
@@ -32,8 +41,7 @@ const partySchema = new Schema({
   beerPercent:String,
   beerQty:String,
   flag:String,
-  beerPrice:String
-  
+  beerPrice:String  
 });
 
 const worldBeerSchema = new Schema1({
@@ -46,6 +54,7 @@ const worldBeerSchema = new Schema1({
 });
 
 const worldModel = mongoose.model('worldBeers', worldBeerSchema)
+const nonAlcoModel = mongoose.model('nonAlco', nonAlcoSchema)
 const packModel = mongoose.model('partyPack', partySchema)
 
 //App Get that retrieves data from addBeers form
@@ -73,6 +82,38 @@ app.get('/partyPack', (req, res) =>{
   })
 })
 
+// add nonAlcoholic beers get request
+app.get('/addNonAlcohol', (req, res) =>{
+  nonAlcoModel.find((err, data) =>{
+    res.json(data);
+  })
+  //res.send('In Beers')
+})
+
+// nonAlcoholic get request
+app.get('/nonAlcoholic', (req, res) =>{
+  nonAlcoModel.find((err, data) =>{
+      res.json(data);
+  })
+  //res.send('In Beers')
+})
+
+//App Post that creates all the data 
+app.post('/addBeers', (req, res) => {
+    packModel.create({
+      beerType: req.body.beerType,
+      beerPercent: req.body.beerPercent,
+      beerQty: req.body.beerQty,
+      flag: req.body.flag,
+      beerPrice: req.body.beerPrice,
+      beerImage: req.body.beerImage
+     })
+    .then()
+    .catch();
+
+    res.send('Item Added');
+  })
+      
 //App Post that creates all the data into the database
 app.post('/addWorld', (req, res) => {
     worldModel.create({
@@ -85,31 +126,26 @@ app.post('/addWorld', (req, res) => {
     })
     .then()
     .catch();
-  
 
     res.send('Item Added');
   })
 
-  //App Post that creates all the data into the database
-app.post('/addBeers', (req, res) => {
-  packModel.create({
-    beerType: req.body.beerType,
-    beerPercent: req.body.beerPercent,
-    beerQty: req.body.beerQty,
-    flag: req.body.flag,
-    beerPrice: req.body.beerPrice,
-    beerImage: req.body.beerImage
-  })
+//App Post that populates nonAlcoModel collection 
+app.post('/addNonAlcohol', (req, res) => {
+  nonAlcoModel.create({
+    beerTypeAl: req.body.beerTypeAl,
+    beerPercentAl: req.body.beerPercentAl,
+    beerQtyAl: req.body.beerQtyAl,
+    flagAl: req.body.flagAl,
+    beerPriceAl: req.body.beerPriceAl,
+    beerImageAl: req.body.beerImageAl
+      })
   .then()
   .catch();
 
-
   res.send('Item Added');
 })
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+    
 
 
 app.listen(port, () => {
