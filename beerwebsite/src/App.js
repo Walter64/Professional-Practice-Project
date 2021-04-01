@@ -10,6 +10,7 @@ import { worldBeers } from './components/worldBeers';
 import { bestSellers } from './components/bestSellers';
 import { nonAlcoholic } from './components/nonAlcoholic';
 import {Create} from './components/create';
+import {AddNonAlcohol} from './components/addNonAlcohol';
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
                 <Nav.Link href="/bestSellers">Best Sellers</Nav.Link>
                 <Nav.Link href="/nonAlcoholic">Non-Alcoholic</Nav.Link>
                 <Nav.Link href="/create">Add Beer</Nav.Link>
+                <Nav.Link href="addNonAlcohol">Add Non-Alcoholic</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
@@ -69,6 +71,7 @@ function App() {
             <Route path='/bestSellers' component={bestSellers} />
             <Route path='/nonAlcoholic' component={nonAlcoholic} />
             <Route path='/create' component={Create} />
+            <Route path='/addNonAlcohol' component={AddNonAlcohol} />
           </Switch>
         </div>
       </div>

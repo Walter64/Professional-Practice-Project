@@ -39,7 +39,6 @@ export class PackItem extends React.Component {
                         <Button id="qtyBtn" variant="danger">Add To Cart</Button>
                     </Card.Body>
                 </Card>
-
             </div>
         )
     }

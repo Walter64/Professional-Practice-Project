@@ -13,24 +13,26 @@ app.use(function(req, res, next) {
     "Origin, X-Requested-With, Content-Type, Accept");
     next();
     });
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-  //Set up using the mongod database
+//Set up using the mongod database
 const strConnection = 'mongodb+srv://admin:bluebirds1927@cluster0.m46dm.mongodb.net/BeerWebsite?retryWrites=true&w=majority';
 mongoose.connect(strConnection, {useNewUrlParser: true});
 
+// create schema instantiations
 const Schema = mongoose.Schema;
-//const Schema1 = mongoose.Schema;
+const Schema2 = mongoose.Schema;
  
-/*const beerSchema = new Schema({
-    beerType:String,
-    beerPercent:String,
-    beerQty:String,
-    flag:String,
-    beerPrice:String,
-    beerImage:String
-});*/
+const nonAlcoSchema = new Schema2({
+  beerImageAl:String,
+  beerTypeAl:String,
+  beerPercentAl:String,
+  beerQtyAl:String,
+  flagAl:String,
+  beerPriceAl:String
+});
 
 const partySchema = new Schema({
   beerImage:String,
@@ -38,13 +40,13 @@ const partySchema = new Schema({
   beerPercent:String,
   beerQty:String,
   flag:String,
-  beerPrice:String
-  
+  beerPrice:String  
 });
 
-const beerModel = mongoose.model('beers', beerSchema)
+// const beerModel = mongoose.model('beers', beerSchema)
 
-
+const nonAlcoModel = mongoose.model('nonAlco', nonAlcoSchema)
+const packModel = mongoose.model('partyPack', partySchema)
 
 app.get('/addBeers', (req, res) =>{
     packModel.find((err, data) =>{
@@ -55,6 +57,22 @@ app.get('/addBeers', (req, res) =>{
 
 app.get('/partyPack', (req, res) =>{
   packModel.find((err, data) =>{
+      res.json(data);
+  })
+  //res.send('In Beers')
+})
+
+// add nonAlcoholic beers get request
+app.get('/addNonAlcohol', (req, res) =>{
+  nonAlcoModel.find((err, data) =>{
+    res.json(data);
+  })
+  //res.send('In Beers')
+})
+
+// nonAlcoholic get request
+app.get('/nonAlcoholic', (req, res) =>{
+  nonAlcoModel.find((err, data) =>{
       res.json(data);
   })
   //res.send('In Beers')
@@ -72,10 +90,25 @@ app.post('/addBeers', (req, res) => {
     })
     .then()
     .catch();
-  
 
     res.send('Item Added');
   })
+
+//App Post that populates nonAlcoModel collection 
+app.post('/addNonAlcohol', (req, res) => {
+  nonAlcoModel.create({
+    beerTypeAl: req.body.beerTypeAl,
+    beerPercentAl: req.body.beerPercentAl,
+    beerQtyAl: req.body.beerQtyAl,
+    flagAl: req.body.flagAl,
+    beerPriceAl: req.body.beerPriceAl,
+    beerImageAl: req.body.beerImageAl
+  })
+  .then()
+  .catch();
+
+  res.send('Item Added');
+})
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
