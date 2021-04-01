@@ -23,16 +23,8 @@ const strConnection = 'mongodb+srv://admin:bluebirds1927@cluster0.m46dm.mongodb.
 mongoose.connect(strConnection, {useNewUrlParser: true});
 
 const Schema = mongoose.Schema;
-//const Schema1 = mongoose.Schema;
- 
-/*const beerSchema = new Schema({
-    beerType:String,
-    beerPercent:String,
-    beerQty:String,
-    flag:String,
-    beerPrice:String,
-    beerImage:String
-});*/
+const Schema1 = mongoose.Schema;
+
 
 const partySchema = new Schema({
   beerImage:String,
@@ -44,31 +36,52 @@ const partySchema = new Schema({
   
 });
 
-//const beerModel = mongoose.model('beers', beerSchema)
+const worldBeerSchema = new Schema1({
+  beerImageWorld:String,
+  beerTypeWorld:String,
+  beerPercentWorld:String,
+  beerQtyWorld:String,
+  flagWorld:String,
+  beerPriceWorld:String
+});
+
+const worldModel = mongoose.model('worldBeers', worldBeerSchema)
 const packModel = mongoose.model('partyPack', partySchema)
+
+//App Get that retrieves data from addBeers form
 app.get('/addBeers', (req, res) =>{
     packModel.find((err, data) =>{
         res.json(data);
     })
-    //res.send('In Beers')
 })
 
+//App Get that retrieves data from addBeers form
+app.get('/addWorld', (req, res) =>{
+  worldModel.find((err, data) =>{
+      res.json(data);
+  })
+})
+
+app.get('/worldBeers', (req, res) =>{
+  worldModel.find((err, data) =>{
+      res.json(data);
+  })
+})
 app.get('/partyPack', (req, res) =>{
   packModel.find((err, data) =>{
       res.json(data);
   })
-  //res.send('In Beers')
 })
 
-//App Post that creates all the data 
-app.post('/addBeers', (req, res) => {
-    packModel.create({
-      beerType: req.body.beerType,
-      beerPercent: req.body.beerPercent,
-      beerQty: req.body.beerQty,
-      flag: req.body.flag,
-      beerPrice: req.body.beerPrice,
-      beerImage: req.body.beerImage
+//App Post that creates all the data into the database
+app.post('/addWorld', (req, res) => {
+    worldModel.create({
+      beerTypeWorld: req.body.beerTypeWorld,
+      beerPercentWorld: req.body.beerPercentWorld,
+      beerQtyWorld: req.body.beerQtyWorld,
+      flagWorld: req.body.flagWorld,
+      beerPriceWorld: req.body.beerPriceWorld,
+      beerImageWorld: req.body.beerImageWorld
     })
     .then()
     .catch();
@@ -76,6 +89,23 @@ app.post('/addBeers', (req, res) => {
 
     res.send('Item Added');
   })
+
+  //App Post that creates all the data into the database
+app.post('/addBeers', (req, res) => {
+  packModel.create({
+    beerType: req.body.beerType,
+    beerPercent: req.body.beerPercent,
+    beerQty: req.body.beerQty,
+    flag: req.body.flag,
+    beerPrice: req.body.beerPrice,
+    beerImage: req.body.beerImage
+  })
+  .then()
+  .catch();
+
+
+  res.send('Item Added');
+})
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

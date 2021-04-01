@@ -1,16 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { Party } from '../components/party';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import chang from '../images/chang1.jpg';
-import pack1 from '../images/pack1.jpg';
-import pack2 from '../images/pack2.jpg';
-import pack3 from '../images/pack3.jpg';
-import pack4 from '../images/pack4.jpg';
-import pack5 from '../images/pack5.jpg';
-import pack6 from '../images/pack6.jpg';
-import world from '../images/gardenGlobe.jpg';
 
 export class partyPack extends React.Component {
 
