@@ -12,6 +12,7 @@ import { nonAlcoholic } from './components/nonAlcoholic';
 import {Create} from './components/create';
 import {AddNonAlcohol} from './components/addNonAlcohol';
 import {addWorld} from './components/addWorld';
+import {CreateAccount} from './components/createAccount'
 
 function App() {
   return (
@@ -75,6 +76,7 @@ function App() {
             <Route path='/create' component={Create} />
             <Route path='/addNonAlcohol' component={AddNonAlcohol} />
             <Route path='/addWorld' component={addWorld} />
+            <Route path='/createAccount' component={CreateAccount}/>
           </Switch>
         </div>
       </div>
