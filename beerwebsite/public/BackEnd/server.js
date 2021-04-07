@@ -25,6 +25,7 @@ mongoose.connect(strConnection, {useNewUrlParser: true});
 const Schema = mongoose.Schema;
 const Schema2 = mongoose.Schema;
 const Schema1 = mongoose.Schema;
+const Schema3 = mongoose.Schema;
 
 const nonAlcoSchema = new Schema2({
   beerImageAl:String,
@@ -53,9 +54,16 @@ const worldBeerSchema = new Schema1({
   beerPriceWorld:String
 });
 
+// user account schema
+const accountSchema = new Schema3({
+  email:String,
+  password:String  
+});
+
 const worldModel = mongoose.model('worldBeers', worldBeerSchema)
 const nonAlcoModel = mongoose.model('nonAlco', nonAlcoSchema)
 const packModel = mongoose.model('partyPack', partySchema)
+const userAccount = mongoose.model('addUser', accountSchema)
 
 //App Get that retrieves data from addBeers form
 app.get('/addBeers', (req, res) =>{
@@ -95,6 +103,14 @@ app.get('/nonAlcoholic', (req, res) =>{
   nonAlcoModel.find((err, data) =>{
       res.json(data);
   })
+  //res.send('In Beers')
+})
+
+// user account get request
+app.get('/createAccount', (req, res) =>{
+  userAccount.find((err, data) =>{
+      res.json(data);
+  })  
   //res.send('In Beers')
 })
 
@@ -146,7 +162,18 @@ app.post('/addNonAlcohol', (req, res) => {
   res.send('Item Added');
 })
     
+//App Post that populates userAccount collection
+app.post('/createAccount', (req, res) => {
+  userAccount.create({
+    email: req.body.email,
+    password: req.body.password
+  })
+  .then()
+  .catch();
+  // res.redirect('/signin');
 
+  // res.send('Item Added');
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

@@ -12,7 +12,7 @@ import { nonAlcoholic } from './components/nonAlcoholic';
 import {Create} from './components/create';
 import {AddNonAlcohol} from './components/addNonAlcohol';
 import {addWorld} from './components/addWorld';
-import {CreateAccount} from './components/createAccount'
+import {CreateAccount} from './components/createAccount';
 import {Cart} from './components/cart';
 import {SignIn} from './components/signIn';
 import { Link} from 'react-router-dom';
