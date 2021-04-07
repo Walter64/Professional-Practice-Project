@@ -3,14 +3,15 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 export class WorldItem extends React.Component{
-    constructor(props){
-            super(props);
-}
-    localStore(){
-    const beerPer = this.props.world.beerPercentWorld;
+    constructor(props){   
+        super(props);
+           
 
-    const jsonObj = JSON.stringify(beerPer);
-    localStorage.setItem("beerPer", jsonObj);
+}
+    addCart =(cartData) => {
+        
+       
+        
 }
 
     render(){
@@ -40,7 +41,7 @@ export class WorldItem extends React.Component{
                     <input type="number" id='qty' placeholder="0" size="50"></input>
 
                     <br></br>
-                    <Button id="qtyBtn" onClick="localStore()" variant="danger">Add To Cart</Button>
+                    <Button id="qtyBtn" onClick="addCart" variant="danger">Add To Cart</Button>
                 </Card.Body>
             </Card>
             
