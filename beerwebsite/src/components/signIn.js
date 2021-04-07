@@ -21,7 +21,7 @@ export class SignIn extends React.Component {
                     Submit
             </Button>
             <br></br>
-            <Link to="/">Sign Up?</Link>
+            <Link to="/createAccount">Sign Up?</Link>
             </Form>
         )
     }

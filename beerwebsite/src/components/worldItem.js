@@ -3,15 +3,10 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 export class WorldItem extends React.Component{
-    constructor(props){
-            super(props);
-}
-    localStore(){
-    const beerPer = this.props.world.beerPercentWorld;
 
-    const jsonObj = JSON.stringify(beerPer);
-    localStorage.setItem("beerPer", jsonObj);
-}
+    constructor(){
+        super();
+    }   
 
     render(){
         return(

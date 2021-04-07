@@ -172,6 +172,14 @@ h4{
   background-color: grey;
 }
 
+#userForm {
+  margin: auto;
+  width: 40%;
+  border: 1px solid black;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: white;
+}
 
 
 
