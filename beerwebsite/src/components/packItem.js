@@ -1,14 +1,54 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import {Cart} from './cart';
+import axios from 'axios';
 
 export class PackItem extends React.Component {
     constructor() {
         super();
+        this.addToCart = this.addToCart.bind(this)
+        this.onQtyChange = this.onQtyChange.bind(this)
+        
+        this.state = {
+            quantity: '',
+            price: '',
+            type: '',
+        }
 
     }
 
+    onQtyChange(e) {
+        this.setState({
+            quantity: e.target.value
+        })
+        console.log(this.state.quantity)
+    }
+
+    addToCart() {
+        let packPrice = this.props.pack.beerPrice.slice(1)
+        let price = packPrice * this.state.quantity
+        
+        const newItem = {
+            quantity: this.state.quantity,
+            type: this.props.pack.beerType,
+            totalPrice: price
+        }
+        console.log(newItem.type)
+        
+        axios.post('http://localhost:4000/addCart', newItem)
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+
+        
+    }
+
     render() {
+        console.log(this.state.quantity)
         return (
             <div>
                 {/* Card 1 */}
@@ -32,10 +72,10 @@ export class PackItem extends React.Component {
                         <br></br>
                         <p>{this.props.pack.beerPrice}</p>
                         <label id="qty">Quantity</label>
-                        <input type="number" id='qty' placeholder="0" size="50"></input>
+                        <input type="number" id='qty' placeholder="0" value={this.state.quantity} size="50" onChange={this.onQtyChange}></input>
 
                         <br></br>
-                        <Button id="qtyBtn" variant="danger">Add To Cart</Button>
+                        <Button id="qtyBtn" variant="danger" onClick={this.addToCart}>Add To Cart</Button>
                     </Card.Body>
                 </Card>
             </div>

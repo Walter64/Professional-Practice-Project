@@ -25,6 +25,8 @@ mongoose.connect(strConnection, {useNewUrlParser: true});
 const Schema = mongoose.Schema;
 const Schema2 = mongoose.Schema;
 const Schema1 = mongoose.Schema;
+const Schema3 = mongoose.Schema;
+const Schema4 = mongoose.Schema;
 
 const nonAlcoSchema = new Schema2({
   beerImageAl:String,
@@ -53,9 +55,24 @@ const worldBeerSchema = new Schema1({
   beerPriceWorld:String
 });
 
+const addToCartSchema = new Schema4({
+    itemQty:Number,
+    totalPrice:Number,
+    itemName:String
+
+});
+
+// user account schema
+const accountSchema = new Schema3({
+  email:String,
+  password:String  
+});
+
+const cartModel = mongoose.model('addToCart', addToCartSchema)
 const worldModel = mongoose.model('worldBeers', worldBeerSchema)
 const nonAlcoModel = mongoose.model('nonAlco', nonAlcoSchema)
 const packModel = mongoose.model('partyPack', partySchema)
+const userAccount = mongoose.model('addUser', accountSchema)
 
 //App Get that retrieves data from addBeers form
 app.get('/addBeers', (req, res) =>{
@@ -82,6 +99,7 @@ app.get('/partyPack', (req, res) =>{
   })
 })
 
+
 // add nonAlcoholic beers get request
 app.get('/addNonAlcohol', (req, res) =>{
   nonAlcoModel.find((err, data) =>{
@@ -95,9 +113,43 @@ app.get('/nonAlcoholic', (req, res) =>{
   nonAlcoModel.find((err, data) =>{
       res.json(data);
   })
-  //res.send('In Beers')
 })
 
+// Cart get request
+app.get('/cart', (req, res) =>{
+  cartModel.find((err, data) =>{
+      res.json(data);
+  })
+})
+
+// user account get request
+app.get('/createAccount', (req, res) =>{
+  userAccount.find((err, data) =>{
+      res.json(data);
+  })  
+})
+
+app.post('/addCart', (req, res) => {
+  cartModel.create({
+    itemName: req.body.type,
+    totalPrice: req.body.totalPrice,
+    itemQty: req.body.quantity
+  })
+  .then()
+  .catch();
+  res.send('Item Added');
+})
+//App Delete removes Item in the cart
+app.delete('/cart:id', function (req, res) {
+  console.log(req.params.id);
+  cartModel.deleteOne({ _id: req.params.id },
+  function (err, data) {
+  if (err)
+  res.send(err);
+  res.send(data);
+  })
+  })
+  
 //App Post that creates all the data 
 app.post('/addBeers', (req, res) => {
     packModel.create({
@@ -145,8 +197,18 @@ app.post('/addNonAlcohol', (req, res) => {
 
   res.send('Item Added');
 })
-    
 
+//App Post that populates userAccount collection
+app.post('/createAccount', (req, res) => {
+
+  userAccount.create({
+    email: req.body.email,
+    password: req.body.password
+    
+  })
+  res.redirect(301,'/partyPack');
+  console.log("line 178");
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

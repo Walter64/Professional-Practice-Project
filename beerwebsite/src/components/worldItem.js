@@ -3,8 +3,8 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 export class WorldItem extends React.Component{
-    constructor(props){   
-        super(props);
+    constructor(){   
+        super();
            
 
 }
