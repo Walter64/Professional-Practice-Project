@@ -188,7 +188,7 @@ app.post('/addNonAlcohol', (req, res) => {
 
   res.send('Item Added');
 })
-
+    
 //App Post that populates userAccount collection
 app.post('/createAccount', (req, res) => {
   userAccount.create({
@@ -197,8 +197,13 @@ app.post('/createAccount', (req, res) => {
   })
   .then()
   .catch();
+  // res.redirect('/signin');
   res.redirect(301, '/signIn')
+
+  // res.send('Item Added');
 })
+    
+
 
 app.post('/addCart', (req, res) => {
   cartModel.create({
@@ -210,8 +215,6 @@ app.post('/addCart', (req, res) => {
   .catch();
   res.send('Item Added');
 })
-    
-
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
