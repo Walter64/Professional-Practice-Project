@@ -59,7 +59,7 @@ function App() {
 
         <div id="nav">
           <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand href="/">World Beer Garden</Navbar.Brand>
+            <Navbar.Brand href="/">Global Beer Garden</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">

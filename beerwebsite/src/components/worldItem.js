@@ -3,12 +3,11 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 export class WorldItem extends React.Component{
-
-    constructor(){
+    constructor(){   
         super();
-    }   
 
-    render(){
+}
+   render(){
         return(
             <div>
             {/* Card 1 */}
@@ -35,7 +34,7 @@ export class WorldItem extends React.Component{
                     <input type="number" id='qty' placeholder="0" size="50"></input>
 
                     <br></br>
-                    <Button id="qtyBtn" onClick="localStore()" variant="danger">Add To Cart</Button>
+                    <Button id="qtyBtn" onClick="addCart" variant="danger">Add To Cart</Button>
                 </Card.Body>
             </Card>
             

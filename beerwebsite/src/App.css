@@ -181,6 +181,11 @@ h4{
   background-color: white;
 }
 
-
+#cartItem{
+  display: flex;
+  margin-left: 20%;
+  margin-right: 20%; 
+  
+}
 
 

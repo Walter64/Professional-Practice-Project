@@ -136,7 +136,7 @@ export class addWorld extends React.Component {
 
                     <div className="Form-Group">
                         <input type='submit'
-                            value='Add  World Beer'
+                            value='Add World Beer' 
                             className='btn btn-primary'></input>
 
                     </div>
