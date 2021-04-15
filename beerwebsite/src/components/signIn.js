@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+
 export class SignIn extends React.Component {
 
     render() {
@@ -26,10 +27,7 @@ export class SignIn extends React.Component {
                     <br></br>
                     <Link to="/createAccount">Sign Up?</Link>
                 </Form>
-            </div>
-            <br></br>
-            <Link to="/createAccount">Sign Up?</Link>
-            </Form>
+         </div>
         )
     }
 

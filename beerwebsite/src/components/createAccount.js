@@ -48,12 +48,12 @@ export class CreateAccount extends React.Component {
                 console.log(err)           
         });
 
-        axios.get('http://localhost:4000/SignIn')
-        .then()
-        .catch()
+        // axios.get('http://localhost:4000/SignIn')
+        // .then()
+        // .catch()
 
-                console.log(err);
-        });
+        //         console.log(err);
+        // });
         
         this.setState({
             email: "",

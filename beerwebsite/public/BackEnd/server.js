@@ -55,17 +55,17 @@ const worldBeerSchema = new Schema1({
   beerPriceWorld:String
 });
 
-const addToCartSchema = new Schema4({
-    itemQty:Number,
-    totalPrice:Number,
-    itemName:String
-
-});
-
 // user account schema
 const accountSchema = new Schema3({
   email:String,
   password:String  
+});
+
+const addToCartSchema = new Schema4({
+  itemQty:Number,
+  totalPrice:Number,
+  itemName:String
+
 });
 
 const cartModel = mongoose.model('addToCart', addToCartSchema)
@@ -99,7 +99,6 @@ app.get('/partyPack', (req, res) =>{
   })
 })
 
-
 // add nonAlcoholic beers get request
 app.get('/addNonAlcohol', (req, res) =>{
   nonAlcoModel.find((err, data) =>{
@@ -113,6 +112,14 @@ app.get('/nonAlcoholic', (req, res) =>{
   nonAlcoModel.find((err, data) =>{
       res.json(data);
   })
+  //res.send('In Beers')
+})
+// user account get request
+app.get('/createAccount', (req, res) =>{
+  userAccount.find((err, data) =>{
+      res.json(data);
+  })  
+  //res.send('In Beers')
 })
 
 // Cart get request
@@ -122,23 +129,6 @@ app.get('/cart', (req, res) =>{
   })
 })
 
-// user account get request
-app.get('/createAccount', (req, res) =>{
-  userAccount.find((err, data) =>{
-      res.json(data);
-  })  
-})
-
-app.post('/addCart', (req, res) => {
-  cartModel.create({
-    itemName: req.body.type,
-    totalPrice: req.body.totalPrice,
-    itemQty: req.body.quantity
-  })
-  .then()
-  .catch();
-  res.send('Item Added');
-})
 //App Delete removes Item in the cart
 app.delete('/cart:id', function (req, res) {
   console.log(req.params.id);
@@ -147,7 +137,6 @@ app.delete('/cart:id', function (req, res) {
   if (err)
   res.send(err);
   res.send(data);
-  })
   })
   //res.send('In Beers')
 })
@@ -202,27 +191,27 @@ app.post('/addNonAlcohol', (req, res) => {
 
 //App Post that populates userAccount collection
 app.post('/createAccount', (req, res) => {
-
-  userAccount.create({
-    email: req.body.email,
-    password: req.body.password
-    
-  })
-  res.redirect(301,'/partyPack');
-  console.log("line 178");
-
-//App Post that populates userAccount collection
-app.post('/createAccount', (req, res) => {
   userAccount.create({
     email: req.body.email,
     password: req.body.password
   })
   .then()
   .catch();
-  // res.redirect('/signin');
-
-  // res.send('Item Added');
+  res.redirect(301, '/signIn')
 })
+
+app.post('/addCart', (req, res) => {
+  cartModel.create({
+    itemName: req.body.type,
+    totalPrice: req.body.totalPrice,
+    itemQty: req.body.quantity
+  })
+  .then()
+  .catch();
+  res.send('Item Added');
+})
+    
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
