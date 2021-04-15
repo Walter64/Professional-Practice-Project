@@ -171,6 +171,7 @@ app.post('/createAccount', (req, res) => {
   .then()
   .catch();
   // res.redirect('/signin');
+  res.redirect(301, '/signIn')
 
   // res.send('Item Added');
 })
