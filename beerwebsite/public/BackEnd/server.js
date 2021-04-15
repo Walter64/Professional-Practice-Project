@@ -26,6 +26,7 @@ const Schema = mongoose.Schema;
 const Schema2 = mongoose.Schema;
 const Schema1 = mongoose.Schema;
 const Schema3 = mongoose.Schema;
+const Schema4 = mongoose.Schema;
 
 const nonAlcoSchema = new Schema2({
   beerImageAl:String,
@@ -60,6 +61,14 @@ const accountSchema = new Schema3({
   password:String  
 });
 
+const addToCartSchema = new Schema4({
+  itemQty:Number,
+  totalPrice:Number,
+  itemName:String
+
+});
+
+const cartModel = mongoose.model('addToCart', addToCartSchema)
 const worldModel = mongoose.model('worldBeers', worldBeerSchema)
 const nonAlcoModel = mongoose.model('nonAlco', nonAlcoSchema)
 const packModel = mongoose.model('partyPack', partySchema)
@@ -111,6 +120,25 @@ app.get('/createAccount', (req, res) =>{
   userAccount.find((err, data) =>{
       res.json(data);
   })  
+  //res.send('In Beers')
+})
+
+// Cart get request
+app.get('/cart', (req, res) =>{
+  cartModel.find((err, data) =>{
+      res.json(data);
+  })
+})
+
+//App Delete removes Item in the cart
+app.delete('/cart:id', function (req, res) {
+  console.log(req.params.id);
+  cartModel.deleteOne({ _id: req.params.id },
+  function (err, data) {
+  if (err)
+  res.send(err);
+  res.send(data);
+  })
   //res.send('In Beers')
 })
 
@@ -174,6 +202,17 @@ app.post('/createAccount', (req, res) => {
   res.redirect(301, '/signIn')
 
   // res.send('Item Added');
+})
+
+app.post('/addCart', (req, res) => {
+  cartModel.create({
+    itemName: req.body.type,
+    totalPrice: req.body.totalPrice,
+    itemQty: req.body.quantity
+  })
+  .then()
+  .catch();
+  res.send('Item Added');
 })
 
 app.listen(port, () => {
