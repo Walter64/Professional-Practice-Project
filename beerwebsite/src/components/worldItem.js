@@ -5,16 +5,9 @@ import Button from 'react-bootstrap/Button';
 export class WorldItem extends React.Component{
     constructor(){   
         super();
-           
 
 }
-    addCart =(cartData) => {
-        
-       
-        
-}
-
-    render(){
+   render(){
         return(
             <div>
             {/* Card 1 */}

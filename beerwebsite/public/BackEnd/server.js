@@ -149,7 +149,9 @@ app.delete('/cart:id', function (req, res) {
   res.send(data);
   })
   })
-  
+  //res.send('In Beers')
+})
+
 //App Post that creates all the data 
 app.post('/addBeers', (req, res) => {
     packModel.create({
@@ -208,6 +210,18 @@ app.post('/createAccount', (req, res) => {
   })
   res.redirect(301,'/partyPack');
   console.log("line 178");
+
+//App Post that populates userAccount collection
+app.post('/createAccount', (req, res) => {
+  userAccount.create({
+    email: req.body.email,
+    password: req.body.password
+  })
+  .then()
+  .catch();
+  // res.redirect('/signin');
+
+  // res.send('Item Added');
 })
 
 app.listen(port, () => {

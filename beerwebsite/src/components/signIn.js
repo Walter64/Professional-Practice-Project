@@ -22,10 +22,14 @@ export class SignIn extends React.Component {
                     <Button variant="primary" type="submit">
                         Submit
             </Button>
+
                     <br></br>
                     <Link to="/createAccount">Sign Up?</Link>
                 </Form>
             </div>
+            <br></br>
+            <Link to="/createAccount">Sign Up?</Link>
+            </Form>
         )
     }
 

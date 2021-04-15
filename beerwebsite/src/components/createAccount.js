@@ -30,11 +30,15 @@ export class CreateAccount extends React.Component {
 
     onSubmit(e) {
         e.preventDefault();
-  
-        const newUser = {
-            email: this.state.email,
-            password: this.state.password
-        }
+
+    const newUser = {
+        email: this.state.email,
+        password: this.state.password
+    }
+
+        console.log("email " + this.state.email);
+        console.log("password " + this.state.password);
+
 
         axios.post('http://localhost:4000/createAccount', newUser)
             .then((res) => {                
@@ -48,6 +52,8 @@ export class CreateAccount extends React.Component {
         .then()
         .catch()
 
+                console.log(err);
+        });
         
         this.setState({
             email: "",
