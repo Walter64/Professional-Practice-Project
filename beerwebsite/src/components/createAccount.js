@@ -36,13 +36,20 @@ export class CreateAccount extends React.Component {
             password: this.state.password
         }        
 
+
         axios.post('http://localhost:4000/createAccount', newUser)
             .then((res) => {                
                 console.log(res);
             })
             .catch((err) => {
-                console.log(err);
-        });        
+                console.log(err)           
+        });
+
+        // axios.get('http://localhost:4000/SignIn')
+        //     .then()
+        //     .catch()
+        //         console.log(err);
+        // });        
         
         this.setState({
             email: "",
