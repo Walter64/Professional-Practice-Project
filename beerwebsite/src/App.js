@@ -83,7 +83,7 @@ function App() {
             <Route path='/addNonAlcohol' component={AddNonAlcohol} />
             <Route path='/addWorld' component={addWorld} />
             <Route path='/createAccount' component={CreateAccount}/>
-            <Route path='/cart' component={Cart} />
+            <Route path='/cart' component={Cart} />            
             <Route path='/signIn' component={SignIn} />
           </Switch>
         </div>

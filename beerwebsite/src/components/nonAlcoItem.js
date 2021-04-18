@@ -7,11 +7,47 @@ export class NonAlcoItem extends React.Component {
 
     constructor() {
         super();
+
+        this.onQtyChange = this.onQtyChange.bind(this)
+        this.addToCart = this.addToCart.bind(this)
+
+        this.state = {
+            quantity: '',
+            price: '',
+            type: ''
+        }
+    }
+
+    onQtyChange(e){
+        this.setState(
+            {
+                quantity: e.target.value
+            }
+        )        
+    }
+
+    addToCart(){
+        let itemPrice = this.props.pack.beerPriceAl.slice(1)
+        let price = itemPrice * this.state.quantity
+
+        const newItem = {
+            quantity: this.state.quantity,
+            type: this.props.pack.beerTypeAl,
+            totalPrice: price
+        }
+        console.log(newItem.type)
+
+        axios.post('http://localhost:4000/addCart', newItem)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     render() {
         return(
-
             <div>
             {/* Card 1 */}
             <Card id="crd1" border="dark" style={{ width: '25rem', height: '43rem' }} >
@@ -34,10 +70,10 @@ export class NonAlcoItem extends React.Component {
                     <br></br>
                     <p>{this.props.pack.beerPriceAl}</p>
                     <label id="qty">Quantity</label>
-                    <input type="number" id='qty' placeholder="0" size="50"></input>
+                    <input type="number" id='qty' placeholder="0" value={this.state.quantity} size="50" onChange={this.onQtyChange}></input>
 
                     <br></br>
-                    <Button id="qtyBtn" variant="danger">Add To Cart</Button>
+                    <Button id="qtyBtn" variant="info" onClick={this.addToCart}>Add To Cart</Button>
                 </Card.Body>
             </Card>
 

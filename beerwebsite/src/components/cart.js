@@ -36,6 +36,7 @@ export class Cart extends React.Component{
     render(){
         return(
         <div>
+            <h3 id='cart'>Your Beer Purchases</h3>
 
         <CartPack id="display" cart={this.state.cart} ReloadData={this.ReloadData}></CartPack>
         </div>

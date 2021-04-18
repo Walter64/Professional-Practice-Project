@@ -21,7 +21,7 @@ export class CartItem extends React.Component{
         
         render(){
             
-            return( 
+            return(                                
                 <div id="cartItem">
 
                 {/* Card 1 */}
