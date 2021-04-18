@@ -54,7 +54,7 @@ html{
 }
 
 .flexcontainer div{
-  width: 200px;
+  width: 310px;
   height: 115px;
   margin: 5px;  
   font-size: 3em;
@@ -65,23 +65,23 @@ html{
 
 .flexcontainer div:nth-child(1){
   flex: 6;  
-  flex-shrink: 1;
+  flex-shrink:inherit;
 }
 .flexcontainer div:nth-child(2){
   flex: 1;
   flex-grow: 6;
-  flex-shrink: 4;
+  flex-shrink: inherit;
   
 }
 .flexcontainer div:nth-child(3){
   flex: 3;
   flex-grow: 3;
-  flex-shrink: 4;  
+  flex-shrink: 1;  
 }
 .flexcontainer div:nth-child(4){
   flex: 3;
   flex-grow: 3;
-  flex-shrink: 4;
+  flex-shrink: 1;
 }
 
 input[type=search] { 
@@ -161,11 +161,13 @@ h4{
 }
 
 #crd1, #display {
-   margin: 50px; 
-   /* margin-bottom: 50px;  */
-  /* display: inline-block;  */
-  float:left;
-
+  margin: 50px; 
+  /* margin-left: 8%;   */
+  /* margin-bottom: 40px;    */
+  /* display: flex; */
+  /* justify-content: space-between; */
+   /* display: inline-block;  */
+  float: left;
 }
 
 #packDiv {
@@ -178,14 +180,25 @@ h4{
   border: 1px solid black;
   margin-top: 50px;
   padding: 20px;
-  background-color: white;
+  background-color: white;  
 }
 
 #cartItem{
   display: flex;
   margin-left: 20%;
-  margin-right: 20%; 
-  
+  margin-right: 20%;  
+  border: 1px solid rgba(255,255,255,.25);
 }
+
+#cart{
+  margin: auto;
+  width: 60%;
+  /* border-bottom: 1px solid black;  */
+  /* border-bottom: 1px solid rgba(255,255,255,.25); */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* background-color: #5499C7; */
+}
+
 
 

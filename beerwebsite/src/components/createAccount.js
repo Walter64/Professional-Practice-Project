@@ -30,27 +30,27 @@ export class CreateAccount extends React.Component {
 
     onSubmit(e) {
         e.preventDefault();
-        
+
         const newUser = {
             email: this.state.email,
             password: this.state.password
-        }        
+        }
 
 
         axios.post('http://localhost:4000/createAccount', newUser)
-            .then((res) => {                
+            .then((res) => {
                 console.log(res);
             })
             .catch((err) => {
-                console.log(err)           
-        });
+                console.log(err)
+            });
 
         // axios.get('http://localhost:4000/SignIn')
         //     .then()
         //     .catch()
         //         console.log(err);
         // });        
-        
+
         this.setState({
             email: "",
             password: ""
@@ -81,9 +81,7 @@ export class CreateAccount extends React.Component {
                             value={this.state.password}
                             onChange={this.onChangePassword} />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Create Account
-                </Button>               
+                    <Button variant="primary" type="submit">Create Account</Button>
                 </Form>
             </div>
         )
