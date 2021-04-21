@@ -114,7 +114,6 @@ app.get('/nonAlcoholic', (req, res) =>{
   })
   //res.send('In Beers')
 })
-
 // user account get request
 app.get('/createAccount', (req, res) =>{
   userAccount.find((err, data) =>{
@@ -203,6 +202,8 @@ app.post('/createAccount', (req, res) => {
 
   // res.send('Item Added');
 })
+    
+
 
 app.post('/addCart', (req, res) => {
   cartModel.create({
