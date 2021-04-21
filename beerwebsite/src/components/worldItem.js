@@ -7,6 +7,7 @@ export class WorldItem extends React.Component {
 
     constructor() {
         super();
+           
 
         this.onQtyChange = this.onQtyChange.bind(this)
         this.addToCart = this.addToCart.bind(this)
