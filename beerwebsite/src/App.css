@@ -161,13 +161,10 @@ h4{
 }
 
 #crd1, #display {
-  margin: 50px; 
-  /* margin-left: 8%;   */
-  /* margin-bottom: 40px;    */
-  /* display: flex; */
-  /* justify-content: space-between; */
-   /* display: inline-block;  */
-  float: left;
+  /* margin: 100px; */
+  margin-left: 9.5%;
+  margin-bottom: 40px;
+  float: left;  
 }
 
 #packDiv {
@@ -191,7 +188,7 @@ h4{
 }
 
 #cart{
-  margin: auto;
+  margin: auto;  
   width: 60%;
   /* border-bottom: 1px solid black;  */
   /* border-bottom: 1px solid rgba(255,255,255,.25); */
@@ -200,5 +197,10 @@ h4{
   /* background-color: #5499C7; */
 }
 
-
+#myCart {  
+  background-color: #fbfbfb;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: 5px solid orangered;
+}
 
